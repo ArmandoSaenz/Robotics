@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33403.182
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Robotics", "Robotics\Robotics.csproj", "{9FC6DFF4-3AA3-4306-ACAA-67CB3B5D5F9A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mathematics", "Mathematics\Mathematics.csproj", "{7C4F6A24-B508-4F40-9994-D274FBAC7E0F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tester", "Tester\Tester.csproj", "{E5B222F7-B4E3-403F-A4A0-1C21E98BB236}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9FC6DFF4-3AA3-4306-ACAA-67CB3B5D5F9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FC6DFF4-3AA3-4306-ACAA-67CB3B5D5F9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FC6DFF4-3AA3-4306-ACAA-67CB3B5D5F9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FC6DFF4-3AA3-4306-ACAA-67CB3B5D5F9A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C4F6A24-B508-4F40-9994-D274FBAC7E0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C4F6A24-B508-4F40-9994-D274FBAC7E0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C4F6A24-B508-4F40-9994-D274FBAC7E0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C4F6A24-B508-4F40-9994-D274FBAC7E0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5B222F7-B4E3-403F-A4A0-1C21E98BB236}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5B222F7-B4E3-403F-A4A0-1C21E98BB236}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5B222F7-B4E3-403F-A4A0-1C21E98BB236}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5B222F7-B4E3-403F-A4A0-1C21E98BB236}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B58086D7-2893-4A61-A919-749409E90B54}
+	EndGlobalSection
+EndGlobal
