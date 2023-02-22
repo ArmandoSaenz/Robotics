@@ -36,7 +36,7 @@ namespace Tester
                     Console.WriteLine(ex.Message);
                 }
             }
-            Console.WriteLine($"El producto punto es {result}" );
+            Console.WriteLine($"El producto punto es {String.Join(",",Operations.ScalarProducOpt(x,1.5f))}" );
             Console.ReadKey();
         }
     }
