@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tester", "Tester\Tester.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DH_Parameters", "DH_Parameters\DH_Parameters.csproj", "{CAE83E04-4365-4905-8584-AB06BD45B7C8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pelicano", "Pelicano\Pelicano.csproj", "{517CA431-A628-4B16-98D6-102E1F54702D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{CAE83E04-4365-4905-8584-AB06BD45B7C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CAE83E04-4365-4905-8584-AB06BD45B7C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CAE83E04-4365-4905-8584-AB06BD45B7C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{517CA431-A628-4B16-98D6-102E1F54702D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{517CA431-A628-4B16-98D6-102E1F54702D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{517CA431-A628-4B16-98D6-102E1F54702D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{517CA431-A628-4B16-98D6-102E1F54702D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
