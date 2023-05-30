@@ -69,12 +69,22 @@
             this.button6 = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.gbCommunication = new System.Windows.Forms.GroupBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.cbSerialPorts = new System.Windows.Forms.ComboBox();
+            this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
+            this.btnConnect = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.probarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTask)).BeginInit();
             this.groupBox5.SuspendLayout();
+            this.gbCommunication.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -272,6 +282,7 @@
             this.M4,
             this.M5,
             this.M6});
+            this.dgvTask.ContextMenuStrip = this.contextMenuStrip1;
             this.dgvTask.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvTask.Location = new System.Drawing.Point(3, 16);
             this.dgvTask.Name = "dgvTask";
@@ -363,6 +374,7 @@
             this.button4.TabIndex = 2;
             this.button4.Text = "Reset";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // btnOpenFile
             // 
@@ -393,11 +405,80 @@
             this.openFileDialog1.FileName = "openFileDialog1";
             this.openFileDialog1.Filter = "Archivos JSON|*.json";
             // 
+            // gbCommunication
+            // 
+            this.gbCommunication.Controls.Add(this.btnUpdate);
+            this.gbCommunication.Controls.Add(this.btnConnect);
+            this.gbCommunication.Controls.Add(this.cbSerialPorts);
+            this.gbCommunication.Controls.Add(this.label7);
+            this.gbCommunication.Location = new System.Drawing.Point(377, 257);
+            this.gbCommunication.Name = "gbCommunication";
+            this.gbCommunication.Size = new System.Drawing.Size(288, 108);
+            this.gbCommunication.TabIndex = 4;
+            this.gbCommunication.TabStop = false;
+            this.gbCommunication.Text = "Comunicación";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(6, 16);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(41, 13);
+            this.label7.TabIndex = 0;
+            this.label7.Text = "Puerto:";
+            // 
+            // cbSerialPorts
+            // 
+            this.cbSerialPorts.FormattingEnabled = true;
+            this.cbSerialPorts.Location = new System.Drawing.Point(53, 13);
+            this.cbSerialPorts.Name = "cbSerialPorts";
+            this.cbSerialPorts.Size = new System.Drawing.Size(229, 21);
+            this.cbSerialPorts.TabIndex = 1;
+            // 
+            // serialPort1
+            // 
+            this.serialPort1.BaudRate = 115200;
+            // 
+            // btnConnect
+            // 
+            this.btnConnect.Location = new System.Drawing.Point(53, 40);
+            this.btnConnect.Name = "btnConnect";
+            this.btnConnect.Size = new System.Drawing.Size(188, 23);
+            this.btnConnect.TabIndex = 3;
+            this.btnConnect.Text = "Conectar";
+            this.btnConnect.UseVisualStyleBackColor = true;
+            this.btnConnect.Click += new System.EventHandler(this.btnConnect_Click);
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Location = new System.Drawing.Point(53, 69);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(188, 23);
+            this.btnUpdate.TabIndex = 4;
+            this.btnUpdate.Text = "Actualizar";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.probarToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 48);
+            // 
+            // probarToolStripMenuItem
+            // 
+            this.probarToolStripMenuItem.Name = "probarToolStripMenuItem";
+            this.probarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.probarToolStripMenuItem.Text = "Probar";
+            this.probarToolStripMenuItem.Click += new System.EventHandler(this.probarToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(583, 372);
+            this.ClientSize = new System.Drawing.Size(705, 372);
+            this.Controls.Add(this.gbCommunication);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
@@ -413,6 +494,9 @@
             this.groupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvTask)).EndInit();
             this.groupBox5.ResumeLayout(false);
+            this.gbCommunication.ResumeLayout(false);
+            this.gbCommunication.PerformLayout();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -452,6 +536,14 @@
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.GroupBox gbCommunication;
+        private System.Windows.Forms.ComboBox cbSerialPorts;
+        private System.Windows.Forms.Label label7;
+        private System.IO.Ports.SerialPort serialPort1;
+        private System.Windows.Forms.Button btnConnect;
+        private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem probarToolStripMenuItem;
     }
 }
 

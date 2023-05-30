@@ -85,6 +85,19 @@ namespace Braccio
         public Form1()
         {
             InitializeComponent();
+            /*string[] ports = System.IO.Ports.SerialPort.GetPortNames();
+            foreach(string port in ports)
+            {
+                cbSerialPorts.Items.Add(port);
+            }*/
+            btnUpdate.PerformClick();
+        }
+        private void UpdatePorts()
+        {
+            Dictionary<string, String> ports = ClassPorts.GetSerialPorts();
+            cbSerialPorts.DataSource = new BindingSource(ports, null);
+            cbSerialPorts.ValueMember = "Key";
+            cbSerialPorts.DisplayMember = "Value";
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -178,6 +191,60 @@ namespace Braccio
                     int[] poses = pos.GetPosture();
                     dgvTask.Rows.Add(Array.ConvertAll<int,object>(poses, item => (object)item));
                 }
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            dgvTask.Rows.Clear();
+        }
+
+        private void btnConnect_Click(object sender, EventArgs e)
+        {
+            if (serialPort1.IsOpen)
+            {
+                serialPort1.Close();
+                btnConnect.Text = "Conectar";
+            }
+            else
+            {
+                try
+                { 
+                    serialPort1.PortName = cbSerialPorts.SelectedValue.ToString();
+                    serialPort1.BaudRate = 115200;
+                    serialPort1.Open();
+                    btnConnect.Text = "Desconectar";
+                }
+                catch(Exception ex) 
+                {
+                    MessageBox.Show(ex.Message, "Error de comunicación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    serialPort1.Close();
+                    btnConnect.Text = "Conectar";
+                }
+            }
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            UpdatePorts();
+        }
+
+        private void probarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (serialPort1.IsOpen)
+            {
+                DataGridViewRow row = dgvTask.SelectedRows[0];
+                /*Postures[row.Index].SetPosture(new int[] {
+                        row.Cells[0].Value == null ? 0 : (int)row.Cells[0].Value,
+                        row.Cells[1].Value == null ? 0 : (int)row.Cells[1].Value,
+                        row.Cells[2].Value == null ? 0 : (int)row.Cells[2].Value,
+                        row.Cells[3].Value == null ? 0 : (int)row.Cells[3].Value,
+                        row.Cells[4].Value == null ? 0 : (int)row.Cells[4].Value,
+                        row.Cells[5].Value == null ? 0 : (int)row.Cells[5].Value });*/
+                string command = String.Join(",", Array.ConvertAll<int, string>(Postures[row.Index].GetPosture(), item => item.ToString()));
+                command = $"LMC{command};";
+                MessageBox.Show(command);
+                serialPort1.WriteLine(command);
             }
         }
     }
