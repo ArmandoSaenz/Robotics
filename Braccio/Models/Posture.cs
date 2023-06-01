@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Braccio.Models
 {
@@ -27,6 +28,29 @@ namespace Braccio.Models
         public int[] GetPosture()
         {
             return new int[] { Angle1, Angle2, Angle3, Angle4, Angle5, Angle6 };
+        }
+
+        private int Convert2Int(object value)
+        {
+            if(value is int)
+            {
+                return (int)value;
+            }
+            else if(value is string)
+            {
+                return int.Parse(value.ToString());
+            }
+            return 0;
+        }
+        public void SetPosture(DataGridViewRow posture)
+        {
+
+            Angle1 = Convert2Int(posture.Cells[0].Value);
+            Angle2 = Convert2Int(posture.Cells[1].Value);
+            Angle3 = Convert2Int(posture.Cells[2].Value);
+            Angle4 = Convert2Int(posture.Cells[3].Value);
+            Angle5 = Convert2Int(posture.Cells[4].Value);
+            Angle6 = Convert2Int(posture.Cells[5].Value);
         }
     }
 }

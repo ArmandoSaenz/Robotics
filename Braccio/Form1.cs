@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.Threading;
 namespace Braccio
 {
     public partial class Form1 : Form
@@ -167,12 +167,12 @@ namespace Braccio
                     DataGridViewRow row = dgvTask.Rows[i];
                     Postures[i] = new Models.Posture();
                     Postures[i].SetPosture(new int[] { 
-                        row.Cells[0].Value == null ? 0 : (int)row.Cells[0].Value,
-                        row.Cells[1].Value == null ? 0 : (int)row.Cells[1].Value,
-                        row.Cells[2].Value == null ? 0 : (int)row.Cells[2].Value,
-                        row.Cells[3].Value == null ? 0 : (int)row.Cells[3].Value,
-                        row.Cells[4].Value == null ? 0 : (int)row.Cells[4].Value,
-                        row.Cells[5].Value == null ? 0 : (int)row.Cells[5].Value });
+                        row.Cells[0].Value == null ? 0 : Convert.ToInt32(row.Cells[0].Value),
+                        row.Cells[1].Value == null ? 0 : Convert.ToInt32(row.Cells[1].Value),
+                        row.Cells[2].Value == null ? 0 : Convert.ToInt32(row.Cells[2].Value),
+                        row.Cells[3].Value == null ? 0 : Convert.ToInt32(row.Cells[3].Value),
+                        row.Cells[4].Value == null ? 0 : Convert.ToInt32(row.Cells[4].Value),
+                        row.Cells[5].Value == null ? 0 : Convert.ToInt32(row.Cells[5].Value) });
                 }
                 string json = Newtonsoft.Json.JsonConvert.SerializeObject(Postures, Newtonsoft.Json.Formatting.Indented);
                 File.WriteAllText(saveFileDialog1.FileName, json);
@@ -231,17 +231,13 @@ namespace Braccio
 
         private void probarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (serialPort1.IsOpen)
+            Thread.Sleep(10000);
+            //if (serialPort1.IsOpen)
             {
                 DataGridViewRow row = dgvTask.SelectedRows[0];
-                /*Postures[row.Index].SetPosture(new int[] {
-                        row.Cells[0].Value == null ? 0 : (int)row.Cells[0].Value,
-                        row.Cells[1].Value == null ? 0 : (int)row.Cells[1].Value,
-                        row.Cells[2].Value == null ? 0 : (int)row.Cells[2].Value,
-                        row.Cells[3].Value == null ? 0 : (int)row.Cells[3].Value,
-                        row.Cells[4].Value == null ? 0 : (int)row.Cells[4].Value,
-                        row.Cells[5].Value == null ? 0 : (int)row.Cells[5].Value });*/
-                string command = String.Join(",", Array.ConvertAll<int, string>(Postures[row.Index].GetPosture(), item => item.ToString()));
+                Models.Posture posCurrent = new Models.Posture();
+                posCurrent.SetPosture(row);
+                string command = String.Join(",", Array.ConvertAll<int, string>(posCurrent.GetPosture(), item => item.ToString()));
                 command = $"LMC{command};";
                 MessageBox.Show(command);
                 serialPort1.WriteLine(command);
